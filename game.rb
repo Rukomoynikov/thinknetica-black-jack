@@ -16,7 +16,14 @@ class Game
     message_panel.game_starting
     send_starting_cards
     bet
-    move
+
+    loop do
+      break if check_for_three_cards
+      break if player.ready_to_open?
+      move
+    end
+
+    finalize
   end
 
   private 
@@ -43,8 +50,47 @@ class Game
 
     player.move (self)
     message_panel.dashboard(player, dealer, self)
-    dealer.move (self)
+
+    message_from_dealer = dealer.move (self)
+    p "Dealer is #{ message_from_dealer }"
     message_panel.dashboard(player, dealer, self)
+  end
+
+  def check_for_three_cards
+    self.player.cards.count >= 3 && self.dealer.cards.count >= 3
+  end
+
+  def finalize
+    find_winner
+    player.ready_to_open = false
+
+    return 'Game finished' if bank == 0
+
+    self.start
+  end
+
+  def find_winner
+    player_score = deck.sum(player.cards)
+    dealer_score = deck.sum(dealer.cards)
+
+    winner = if player_score - 21 < dealer_score - 21
+      player
+    else 
+      dealer
+    end
+
+    winner.bank += bank
+
+    p "WIN: #{ winner.name }"
+
+    reset_game
+  end
+
+  def reset_game
+    self.bank = 0
+
+    player.reset_cards
+    dealer.reset_cards
   end
 
   attr_writer :menu, :player, :deck, :dealer, :message_panel, :bank

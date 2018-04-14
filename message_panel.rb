@@ -15,9 +15,13 @@ class MessagePanel
   end
 
   def move_menu
-    p 'Your turn:'
-    p '1. Pass'
-    p '2. Take card'
+    p '| Your turn:'
+    p '| 1. Pass'
+    p '| 2. Take card'
+    p '| 3. Open cards'
     p '-----------------'    
+  end
+
+  def ready_to_open_cards
   end
 end
