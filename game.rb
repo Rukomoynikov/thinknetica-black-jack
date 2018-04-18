@@ -57,7 +57,7 @@ class Game
   end
 
   def check_for_three_cards
-    self.player.cards.count >= 3 && self.dealer.cards.count >= 3
+    self.player.hand.cards.count >= 3 && self.dealer.hand.cards.count >= 3
   end
 
   def finalize
@@ -70,8 +70,8 @@ class Game
   end
 
   def find_winner
-    player_score = deck.sum(player.cards)
-    dealer_score = deck.sum(dealer.cards)
+    player_score = player.hand.sum
+    dealer_score = dealer.hand.sum
 
     winner = if player_score - 21 < dealer_score - 21
       player

@@ -5,6 +5,7 @@ require_relative 'dealer.rb'
 require_relative 'deck.rb'
 require_relative 'card.rb'
 require_relative 'message_panel.rb'
+require_relative 'hand.rb'
 
 player = Player.new
 dealer = Dealer.new

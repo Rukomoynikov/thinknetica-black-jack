@@ -1,11 +1,12 @@
 class Player
   BANK = 100
-  attr_reader :name, :cards, :bank
-  attr_writer :bank, :ready_to_open
+  attr_reader :name, :hand
+  attr_writer  :ready_to_open
+  attr_accessor :bank
 
   def initialize
     self.bank = BANK
-    self.cards = []
+    self.hand = Hand.new
   end
 
   def get_name
@@ -19,7 +20,7 @@ class Player
   end
 
   def take(cards)
-    self.cards.concat cards
+    self.hand.cards.concat cards
   end
 
   def move(game)
@@ -37,11 +38,11 @@ class Player
   end
 
   def reset_cards
-    self.cards = []
+    hand = Hand.new
   end
 
   private
 
-  attr_writer :name, :cards
+  attr_writer :name, :hand
   attr_reader :ready_to_open
 end

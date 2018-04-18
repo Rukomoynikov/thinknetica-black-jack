@@ -4,11 +4,11 @@ class MessagePanel
   end
 
   def dashboard(player, dealer, game)
-    dealer_cards = dealer.cards.count.times.map { '*' }
+    dealer_cards = dealer.hand.cards.count.times.map { '*' }
 
     p '------------------------'
     p "| Casino bank: #{ game.bank }"
-    p "| Player cards: #{ player.cards.join(', ') } | bank: #{ player.bank }"
+    p "| Player cards: #{ player.hand.cards.join(', ') } | bank: #{ player.bank }"
 
     p "| Dealer cards: #{ dealer_cards.join(' ') } | bank: #{ dealer.bank }"
     p '------------------------'

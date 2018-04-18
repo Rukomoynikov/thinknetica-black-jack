@@ -5,7 +5,7 @@ class Dealer < Player
   end
 
   def move(game)
-    cards_sum = game.deck.sum(self.cards)
+    cards_sum = hand.sum
 
     if cards_sum >= 17
       'skip'
