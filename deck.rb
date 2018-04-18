@@ -1,7 +1,4 @@
 class Deck
-  SUITS = %W(♦ ♣ ♠ ♥)
-  RANKS = %W(2 3 4 5 6 7 8 9 10 J Q K A)
-
   attr_reader :cards, :reserved_cards
 
   def initialize
@@ -46,8 +43,8 @@ class Deck
   attr_writer :cards, :reserved_cards
 
   def generate_new
-    SUITS.each do |suit|
-      RANKS.each do |rank|
+    Card::SUITS.each do |suit|
+      Card::RANKS.each do |rank|
         self.cards << Card.new(suit: suit, rank: rank, points: card_points(rank) )
       end
     end
