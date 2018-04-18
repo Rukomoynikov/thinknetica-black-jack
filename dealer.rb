@@ -4,7 +4,7 @@ class Dealer < Player
     'Dealer'
   end
 
-  def move (game)
+  def move(game)
     cards_sum = game.deck.sum(self.cards)
 
     if cards_sum >= 17

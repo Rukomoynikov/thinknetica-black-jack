@@ -1,5 +1,5 @@
 class Deck
-  attr_reader :cards, :reserved_cards
+  attr_reader :cards
 
   def initialize
     self.cards = []
@@ -15,7 +15,6 @@ class Deck
       card_index = rand(cards.length)
       card  = cards.delete_at(card_index)
 
-      reserved_cards << card
       selected_cards << card
     end
 
@@ -40,7 +39,7 @@ class Deck
 
   private 
 
-  attr_writer :cards, :reserved_cards
+  attr_writer :cards
 
   def generate_new
     Card::SUITS.each do |suit|
