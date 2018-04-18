@@ -8,12 +8,10 @@ require_relative 'card.rb'
 require_relative 'message_panel.rb'
 
 player = Player.new
-game_menu = GameMenu.new
 dealer = Dealer.new
 message_panel = MessagePanel.new
 
 game_params = {
-	menu: game_menu, 
 	player: player,
 	dealer: dealer,
 	message_panel: message_panel

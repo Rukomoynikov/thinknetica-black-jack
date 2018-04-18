@@ -10,11 +10,11 @@ class Card
   private 
 
   def to_s
-  	"#{ rank } #{ suit }"
+    "#{ rank } #{ suit }"
   end
 
   def to_str
-  	"#{ rank } #{ suit }"
+    "#{ rank } #{ suit }"
   end
 
   attr_writer :rank, :suit, :points
